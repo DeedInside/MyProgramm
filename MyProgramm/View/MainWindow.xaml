@@ -1,0 +1,59 @@
+﻿<Window x:Class="MyProgramm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyProgramm" 
+        xmlns:local11="clr-namespace:MyProgramm.Model"
+        mc:Ignorable="d"
+        xmlns:vm="clr-namespace:MyProgramm.viewModel" 
+        
+        Title="MainWindow" Height="450" Width="800" FontSize="16">
+    <Window.DataContext>
+        <vm:DataExercisesStandart/>
+    </Window.DataContext>
+    <DockPanel>
+        <!--меню-->
+        <Menu DockPanel.Dock="Top" FontSize="16">
+            <MenuItem Header="Настройки">
+                <MenuItem Header="пусто"/>
+                <MenuItem Header="Выйти"/>
+            </MenuItem>
+            <MenuItem Header="пусто"/>
+        </Menu>
+        <TabControl DockPanel.Dock="Top">
+            <!--Упражнения -->
+            <TabItem Header="Упражнения">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100*"/>
+                        <RowDefinition Height="15*"/>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="ListViesMain" Grid.Row="0" Grid.Column="0" 
+                              ItemsSource="{Binding Path=listExercises}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Наименование упражнения" 
+                                                DisplayMemberBinding="{Binding NameExer}"/>
+                                <GridViewColumn Header="Описание упражнения"
+                                                DisplayMemberBinding="{Binding Description}" />
+                                <GridViewColumn Header="Имя изображения"
+                                                DisplayMemberBinding="{Binding ImageName}"/>
+                                </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <DockPanel Grid.Row="1">
+                        <Button  DockPanel.Dock="Left" Content="Добавить упражнение" Command="{Binding OpenWinExercises}"/>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+            <!--Тренеровки -->
+            <TabItem Header="Тренеровки">
+
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
