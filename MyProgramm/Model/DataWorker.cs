@@ -12,11 +12,8 @@ namespace MyProgramm.Model
     {
         static public List<exercises> LIST_1 = new List<exercises>()
         {
-            new exercises("Жим", "жим штанги лежа", "путь изображения"),
-            new exercises("Жим1", "жим штанги лежа1", "путь изображения1"),
-            new exercises("Жим2", "жим штанги лежа2", "путь изображения2"),
-            new exercises("Жим3", "жим штанги лежа3", "путь изображения3"),
-            new exercises("Жим4", "жим штанги лежа4", "путь изображения4")
+            new exercises("Жим", "жим штанги лежа", "C:\\Users\\loy4f\\Source\\Repos\\MyProgramm1.1\\MyProgramm\\Model\\Image\\bench_press.gif"),
+            new exercises("Жим1", "жим штанги лежа1", "C:\\Users\\loy4f\\Source\\Repos\\MyProgramm1.1\\MyProgramm\\Model\\Image\\bench_press.gif")
         };
 
         public List<exercises> lis
@@ -40,6 +37,10 @@ namespace MyProgramm.Model
             return LIST_1;
         }
 
+        static public string RetName()
+        {
+            return " ";
+        }
         //List<exercises> Exercises = new List<exercises>();
         static public void CreateListData(string name, string discription, string image)
         {

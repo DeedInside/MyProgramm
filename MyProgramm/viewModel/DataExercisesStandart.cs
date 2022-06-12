@@ -15,15 +15,32 @@ namespace MyProgramm.viewModel
         private List<exercises> ListExercises = new List<exercises>(DataWorker.LIST_1);
 
         //Обновление свойства объекта listExercises
+        //public List<exercises> listExercises
+        //{
+        //    get { return ListExercises; }
+        //    set
+        //    {
+        //        ListExercises = value;
+        //        NotifyPropertyChanged("ListExercises");
+        //    }
+        //}
         public List<exercises> listExercises
         {
-            get { return ListExercises; }
-            set
+            get
             {
-                ListExercises = value;
-                NotifyPropertyChanged("ListExercises");
+                return mSubViewModels;
             }
         }
+        private List<exercises> mSubViewModels = new List<exercises>();
+
+        public DataExercisesStandart()
+        {
+            foreach (exercises exe in ListExercises)
+            {
+                listExercises.Add(exe);
+            }
+        }
+
 
         // Свойстав открытия окон
         #region

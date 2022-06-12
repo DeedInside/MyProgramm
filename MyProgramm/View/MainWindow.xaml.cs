@@ -9,7 +9,7 @@ namespace MyProgramm
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ListView Allexercisesvies;
+        public static ItemsControl Allexercisesvies;
         public MainWindow()
         {
 
