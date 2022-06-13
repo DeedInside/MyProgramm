@@ -19,9 +19,11 @@ namespace MyProgramm.View
     /// </summary>
     public partial class WindowAddExercises : Window
     {
+        public static Image ImageWin;
         public WindowAddExercises()
         {
             InitializeComponent();
+            ImageWin = ImageWinXaml;
         }
     }
 }

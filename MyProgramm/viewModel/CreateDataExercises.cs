@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using Microsoft.Win32;
 using MyProgramm.Model;
 using MyProgramm.View;
 
@@ -18,8 +20,28 @@ namespace MyProgramm.viewModel
         {
             PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
         }
-
+        public string NameImageLoad { get; set; }
         #region
+        private RelayCommand LoadImage;
+
+        public RelayCommand loadImage
+        {
+            get
+            {
+                return LoadImage ?? new RelayCommand(obj =>
+                {
+                    OpenFileDialog OpenFile = new OpenFileDialog();
+                    if(OpenFile.ShowDialog() == true)
+                    {
+                        NameImageLoad = OpenFile.FileName;
+                        Image_1 = NameImageLoad;
+                        WindowAddExercises.ImageWin.Source = new BitmapImage(new Uri(NameImageLoad));
+                    }
+                }
+                    );
+            }
+        }
+
         private RelayCommand SaveAndCloseWin;
 
         public RelayCommand saveAndCloseWin
