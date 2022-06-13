@@ -72,7 +72,7 @@ namespace MyProgramm.viewModel
         //Обновление значений листа с meinWindows
         private void UpdateListData()
         {
-            var listExercises = DataWorker.AllListData();
+            var listExercises = DataWorker.AllListExercisesDB(); //AllListData();
             MainWindow.Allexercisesvies.ItemsSource = null;
             MainWindow.Allexercisesvies.Items.Clear();
             MainWindow.Allexercisesvies.ItemsSource = listExercises;
@@ -84,7 +84,8 @@ namespace MyProgramm.viewModel
         public string Image_1 { get; set; }
         public void Save()
         {
-            DataWorker.CreateListData(name_1,Dis_1,Image_1);
+            DataWorker.CreateListExercisesDB(name_1, Dis_1, Image_1);
+            //DataWorker.CreateListData(name_1,Dis_1,Image_1);
         }
         #endregion
 
