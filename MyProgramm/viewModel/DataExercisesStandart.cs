@@ -14,16 +14,7 @@ namespace MyProgramm.viewModel
     {
         private List<exercises> ListExercises = new List<exercises>(DataWorker.LIST_1);
 
-        //Обновление свойства объекта listExercises
-        //public List<exercises> listExercises
-        //{
-        //    get { return ListExercises; }
-        //    set
-        //    {
-        //        ListExercises = value;
-        //        NotifyPropertyChanged("ListExercises");
-        //    }
-        //}
+       // обновление Grid items (элементов)
         public List<exercises> listExercises
         {
             get
@@ -41,7 +32,6 @@ namespace MyProgramm.viewModel
             }
         }
 
-
         // Свойстав открытия окон
         #region
         private RelayCommand openWinExercises;
@@ -57,6 +47,20 @@ namespace MyProgramm.viewModel
                     );
                 }
             }
+        // Заготовка под удаление элемента но пока хз как обратиться к кнопке
+        private RelayCommand DelItem;
+
+        public RelayCommand delItem
+        {
+            get
+            {
+                return DelItem ?? new RelayCommand(obj =>
+                {
+                    MessageBox.Show("uuuups");
+                }
+                    );
+            }
+        }
         #endregion
         //Методы открытия окон
         #region

@@ -23,58 +23,50 @@
         </Menu>
         <TabControl DockPanel.Dock="Top">
             <!--Упражнения -->
-            <TabItem Header="Упражнения">
+            <TabItem Header="Упражнения" >
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100*"/>
-                        <RowDefinition Height="15*"/>
-                    </Grid.RowDefinitions>
-                    <ItemsControl x:Name="ListViesMain" Grid.Row="0" Grid.Column="0" 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="15*"/>
+                        </Grid.RowDefinitions>
+                    <ScrollViewer>
+                        <ItemsControl x:Name="ListViesMain" Grid.Row="0" Grid.Column="0" 
                               ItemsSource="{Binding Path=listExercises}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Background="LightGray" Margin="10" ScrollViewer.CanContentScroll="True" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="70*" />
-                                        <RowDefinition Height="140*" />
-                                        <RowDefinition Height="75*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="120*"/>
-                                        <ColumnDefinition Width="120*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Source="{Binding ImageName}"/>
-                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding NameExer}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    <Label Grid.Row="1" Grid.Column="1"  Content="{Binding Description}"  Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                    <Button Grid.Row="2" Grid.Column="1" Content="Подробнее" Margin="5,5"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:Name="DataTemp" >
+                                    <Grid Background="LightGray" Margin="10" ScrollViewer.CanContentScroll="True" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="70*" />
+                                            <RowDefinition Height="140*" />
+                                            <RowDefinition Height="75*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="120*"/>
+                                            <ColumnDefinition Width="120*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Source="{Binding ImageName}"
+                                           Margin="5,0,0,5"/>
+                                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding NameExer}" 
+                                           Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Label Grid.Row="1" Grid.Column="1"  Content="{Binding Description}"  
+                                           Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <Button x:Name="but" Grid.Row="2" Grid.Column="1" Content="Подробнее" Margin="5,5"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                        <!--<ListView x:Name="ListViesMain" Grid.Row="0" Grid.Column="0" 
-                              ItemsSource="{Binding Path=listExercises}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Наименование упражнения" 
-                                                DisplayMemberBinding="{Binding NameExer}"/>
-                                <GridViewColumn Header="Описание упражнения"
-                                                DisplayMemberBinding="{Binding Description}" />
-                                <GridViewColumn Header="Имя изображения"
-                                                DisplayMemberBinding="{Binding ImageName}"/>
-                                </GridView>
-                        </ListView.View>
-                    </ListView>-->
-                    <DockPanel Grid.Row="1">
-                        <Button  DockPanel.Dock="Left" Content="Добавить упражнение" Command="{Binding OpenWinExercises}"/>
-                    </DockPanel>
+                </ScrollViewer>
+                <DockPanel Grid.Row="1">
+                    <Button  DockPanel.Dock="Left" Content="Добавить упражнение" Command="{Binding OpenWinExercises}"/>
+                </DockPanel>
                 </Grid>
             </TabItem>
             <!--Тренеровки -->

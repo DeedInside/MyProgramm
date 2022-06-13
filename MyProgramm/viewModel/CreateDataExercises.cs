@@ -20,8 +20,10 @@ namespace MyProgramm.viewModel
         {
             PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
         }
-        public string NameImageLoad { get; set; }
+
         #region
+        // загрузка изображения 
+        public string NameImageLoad { get; set; }
         private RelayCommand LoadImage;
 
         public RelayCommand loadImage
