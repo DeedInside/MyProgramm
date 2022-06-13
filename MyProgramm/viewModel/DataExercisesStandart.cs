@@ -12,7 +12,7 @@ namespace MyProgramm.viewModel
 {
     public class DataExercisesStandart : INotifyPropertyChanged
     {
-        private List<exercises> ListExercises = new List<exercises>(DataWorker.LIST_1);
+        private List<exercises> ListExercises = new List<exercises>(DataWorker.AllListExercisesDB());
 
        // обновление Grid items (элементов)
         public List<exercises> listExercises

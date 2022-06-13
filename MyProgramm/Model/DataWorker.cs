@@ -41,7 +41,8 @@ namespace MyProgramm.Model
                 db.SaveChanges();
             }
         }
-
+        //мусор
+        #region
         static public List<exercises> LIST_1 = new List<exercises>()
         {
             new exercises("Жим", "жим штанги лежа", "C:\\Users\\loy4f\\Source\\Repos\\MyProgramm1.1\\MyProgramm\\Model\\Image\\bench_press.gif"),
@@ -58,11 +59,7 @@ namespace MyProgramm.Model
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string PropertyName)
-        {
-            PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
-        }
+        
 
         public static List<exercises> AllListData()
         {
@@ -74,6 +71,13 @@ namespace MyProgramm.Model
             LIST_1.Add(new exercises(name, discription, image));
             
             
+        }
+        #endregion
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string PropertyName)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
         }
     }
 }
