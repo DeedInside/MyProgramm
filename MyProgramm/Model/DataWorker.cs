@@ -33,7 +33,7 @@ namespace MyProgramm.Model
         }
 
         //Удаление записи
-        public static void ListExercisesDB(exercises exer)
+        public static void DeliteListExercisesDB(exercises exer)
         {
             using (ApplicationContext db = new ApplicationContext())
             {

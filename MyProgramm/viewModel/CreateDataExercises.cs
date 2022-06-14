@@ -53,7 +53,7 @@ namespace MyProgramm.viewModel
                 {
                     Window qwe = obj as Window;
                     Save();
-                    UpdateListData();
+                    UpdateAllData();
                     qwe.Close();
                 }
                     );
@@ -66,18 +66,9 @@ namespace MyProgramm.viewModel
 
         private void UpdateAllData()
         {
-            UpdateListData();
+            UppDateWindowsElement.UpdateListData();
         }
         //Обновление значений листа с meinWindows
-        private void UpdateListData()
-        {
-            var listExercises = DataWorker.AllListExercisesDB(); //AllListData();
-            MainWindow.Allexercisesvies.ItemsSource = null;
-            MainWindow.Allexercisesvies.Items.Clear();
-            MainWindow.Allexercisesvies.ItemsSource = listExercises;
-            MainWindow.Allexercisesvies.Items.Refresh();
-           // MainWindow.but
-        }
 
         public string name_1 { get; set; }
         public string Dis_1 { get; set; }

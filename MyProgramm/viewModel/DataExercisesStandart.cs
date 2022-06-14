@@ -48,16 +48,16 @@ namespace MyProgramm.viewModel
                     );
                 }
             }
-        // Заготовка под удаление элемента но пока хз как обратиться к кнопке
-        private RelayCommand DelItem;
 
-        public RelayCommand delItem
+        private RelayCommand openWinEditionExercises;
+
+        public RelayCommand OpenWinEditionExercises
         {
             get
             {
-                return DelItem ?? new RelayCommand(obj =>
+                return openWinExercises ?? new RelayCommand(obj =>
                 {
-                    MessageBox.Show("uuuups");
+                    OpenWindowEditingExercisesElement();
                 }
                     );
             }
@@ -68,6 +68,13 @@ namespace MyProgramm.viewModel
         private void OpenWindowAddExercises()
         {
             WindowAddExercises win = new WindowAddExercises();
+            win.Owner = Application.Current.MainWindow;
+            win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            win.ShowDialog();
+        }
+        private void OpenWindowEditingExercisesElement()
+        {
+            WindowEditingExercisesElement win = new WindowEditingExercisesElement();
             win.Owner = Application.Current.MainWindow;
             win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             win.ShowDialog();
@@ -85,7 +92,26 @@ namespace MyProgramm.viewModel
             }
         }
 
+        // Удаление выделенного элемента из бд
+        private RelayCommand DelItem;
+        public RelayCommand delItem
+        {
+            get
+            {
+                return DelItem ??
+                    (DelItem = new RelayCommand(obj =>
+                    {
+                        exercises exer = obj as exercises;
+                        if (exer != null)
+                            DataWorker.DeliteListExercisesDB(exer);
+                        UppDateWindowsElement.UpdateListData();
+                    },
+                    (obj) => DataWorker.AllListExercisesDB().Count > 0));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
+        //передача в информации об обновлении в интерфейс 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
@@ -93,10 +119,10 @@ namespace MyProgramm.viewModel
         }
 
         //передача в информации об обновлении в интерфейс 
-    private void NotifyPropertyChanged(string PropertyName)
-    {
+        private void NotifyPropertyChanged(string PropertyName)
+        {
             PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
-    }
+        }
 
     }
 }

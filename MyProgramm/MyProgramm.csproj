@@ -183,8 +183,12 @@
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="viewModel\CreateDataExercises.cs" />
     <Compile Include="viewModel\DataExercisesStandart.cs" />
+    <Compile Include="viewModel\UppDateWindowsElement.cs" />
     <Compile Include="View\WindowAddExercises.xaml.cs">
       <DependentUpon>WindowAddExercises.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WindowEditingExercisesElement.xaml.cs">
+      <DependentUpon>WindowEditingExercisesElement.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -199,6 +203,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\WindowAddExercises.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WindowEditingExercisesElement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
