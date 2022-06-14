@@ -7,6 +7,7 @@ using MyProgramm.Model;
 using System.ComponentModel;
 using MyProgramm.View;
 using System.Windows;
+using System.Runtime.CompilerServices;
 
 namespace MyProgramm.viewModel
 {
@@ -73,8 +74,25 @@ namespace MyProgramm.viewModel
         }
         #endregion
 
-        //передача в информации об обновлении в интерфейс 
+        private exercises selectedItemOfList;
+        public exercises SelectedItemOfList
+        {
+            get { return selectedItemOfList; }
+            set
+            {
+                selectedItemOfList = value;
+                OnPropertyChanged("SelectedItemOfList");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+
+        //передача в информации об обновлении в интерфейс 
     private void NotifyPropertyChanged(string PropertyName)
     {
             PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));

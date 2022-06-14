@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using MyProgramm.Model;
+using MyProgramm.viewModel;
 
 namespace MyProgramm
 {
@@ -9,7 +10,8 @@ namespace MyProgramm
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ItemsControl Allexercisesvies;
+        //public static ItemsControl Allexercisesvies;
+        public static ListView Allexercisesvies;
         public MainWindow()
         {
 

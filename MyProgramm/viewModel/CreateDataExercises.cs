@@ -20,7 +20,6 @@ namespace MyProgramm.viewModel
         {
             PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
         }
-
         #region
         // загрузка изображения 
         public string NameImageLoad { get; set; }
@@ -77,6 +76,7 @@ namespace MyProgramm.viewModel
             MainWindow.Allexercisesvies.Items.Clear();
             MainWindow.Allexercisesvies.ItemsSource = listExercises;
             MainWindow.Allexercisesvies.Items.Refresh();
+           // MainWindow.but
         }
 
         public string name_1 { get; set; }
