@@ -19,9 +19,11 @@ namespace MyProgramm.View
     /// </summary>
     public partial class WindowEditingExercisesElement : Window
     {
+        public static Image ImageWinEdition;
         public WindowEditingExercisesElement()
         {
             InitializeComponent();
+            ImageWinEdition = ImageWinXamlEdition;
         }
     }
 }

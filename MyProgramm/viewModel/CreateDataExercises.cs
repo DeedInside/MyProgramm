@@ -62,8 +62,6 @@ namespace MyProgramm.viewModel
         #endregion
         //Сохранение данных и закрытие окна
         #region
-
-
         private void UpdateAllData()
         {
             UppDateWindowsElement.UpdateListData();
@@ -76,7 +74,6 @@ namespace MyProgramm.viewModel
         public void Save()
         {
             DataWorker.CreateListExercisesDB(name_1, Dis_1, Image_1);
-            //DataWorker.CreateListData(name_1,Dis_1,Image_1);
         }
         #endregion
 

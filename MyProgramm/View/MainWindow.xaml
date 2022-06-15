@@ -7,24 +7,46 @@
         xmlns:local11="clr-namespace:MyProgramm.Model"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:MyProgramm.viewModel" 
-        
-        Title="MainWindow" Height="500" Width="800" FontSize="16">
+        Title="MainWindow" Height="450" Width="800" 
+        FontSize="18"  Background="#2A3756">
     <Window.DataContext>
         <vm:DataExercisesStandart/>
     </Window.DataContext>
-    <DockPanel>
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="Background" Value="#1D1F2A" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="Background" Value="#1D1F2A" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="Background" Value="#2A3756" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+    </Window.Resources>
+    <DockPanel Background="#2A3756">
         <!--меню-->
-        <Menu DockPanel.Dock="Top" FontSize="16">
+        <Menu DockPanel.Dock="Top" FontSize="16" Background="#1D1F2A" Foreground="white" BorderBrush="#FF828790">
             <MenuItem Header="Настройки">
                 <MenuItem Header="пусто"/>
                 <MenuItem Header="Выйти"/>
             </MenuItem>
             <MenuItem Header="пусто"/>
         </Menu>
-        <TabControl DockPanel.Dock="Top">
+        <TabControl DockPanel.Dock="Top" Background="#2A3756">
             <!--Упражнения -->
             <TabItem Header="Упражнения" >
-                <Grid>
+                <Grid Background="#2A3756">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -37,7 +59,8 @@
                               ItemsSource="{Binding Path=listExercises}" SelectedItem="{Binding SelectedItemOfList}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Наименование упражнения" DisplayMemberBinding="{Binding NameExer}"/>
+                                <GridViewColumn Header="Наименование упражнения" Width="auto"
+                                                DisplayMemberBinding="{Binding NameExer}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -94,13 +117,14 @@
                         </ItemsControl>
                 </ScrollViewer>-->
 
-                    <Button Grid.Row="1" Grid.Column="0"  DockPanel.Dock="Left" Content="Добавить упражнение" 
+                    <Button Grid.Row="1" Grid.Column="0"  DockPanel.Dock="Left" Content="Добавить упражнение" Margin="5,5" 
                             Command="{Binding OpenWinExercises}"/>
-                    <Button Grid.Row="1" Grid.Column="1"  DockPanel.Dock="Left" Content="Удалить" Width="100" HorizontalAlignment="Right"
+                    <DockPanel Grid.Row="1" Grid.Column="1" >
+                        <Button DockPanel.Dock="Left" Content="Изменить упражнение" Margin="5,5"
+                            Command="{Binding OpenWinEditionExercises }" />
+                        <Button DockPanel.Dock="Left" Content="Удалить" Width="100" HorizontalAlignment="Right" Margin="5,5" 
                             Command="{Binding delItem }" CommandParameter="{Binding SelectedItemOfList}"/>
-                    <Button Grid.Row="1" Grid.Column="1"  DockPanel.Dock="Left" Content="Изменить упражнение" HorizontalAlignment="Left"  
-                            Command="{Binding OpenWinEditionExercises }"/>
-
+                    </DockPanel>
                 </Grid>
             </TabItem>
             <!--Тренеровки -->

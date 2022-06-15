@@ -41,6 +41,17 @@ namespace MyProgramm.Model
                 db.SaveChanges();
             }
         }
+        public static void EditingExercisesDB(exercises exer, string name, string discription, string image)
+        {
+            //заменить на замену а не на удаление
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                db.Exercisesdb.Remove(exer);
+                exercises newExercises = new exercises { NameExer = name, Description = discription, ImageName = image };
+                db.Exercisesdb.Add(newExercises);
+                db.SaveChanges();
+            }
+        }
         //мусор
         #region
         static public List<exercises> LIST_1 = new List<exercises>()
