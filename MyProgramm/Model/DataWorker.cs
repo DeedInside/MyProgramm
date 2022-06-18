@@ -46,9 +46,10 @@ namespace MyProgramm.Model
             //заменить на замену а не на удаление
             using (ApplicationContext db = new ApplicationContext())
             {
-                db.Exercisesdb.Remove(exer);
-                exercises newExercises = new exercises { NameExer = name, Description = discription, ImageName = image };
-                db.Exercisesdb.Add(newExercises);
+                exercises exer_1 = db.Exercisesdb.FirstOrDefault(d => d.Id == exer.Id);
+                exer_1.NameExer = name;
+                exer_1.Description = discription;
+                exer_1.ImageName = image;
                 db.SaveChanges();
             }
         }

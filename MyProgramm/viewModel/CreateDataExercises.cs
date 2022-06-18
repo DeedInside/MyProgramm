@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace MyProgramm.viewModel
         #region
         // загрузка изображения 
         public string NameImageLoad { get; set; }
+        private string NamePatch = @"C:\Users\loy4f\Source\Repos\MyProgramm_1.4\MyProgramm\Model\Image\";
         private RelayCommand LoadImage;
 
         public RelayCommand loadImage
@@ -73,6 +75,11 @@ namespace MyProgramm.viewModel
         public string Image_1 { get; set; }
         public void Save()
         {
+            //сохранение изображения
+            FileInfo fileInf = new FileInfo(Image_1);
+            Image_1 = NamePatch + fileInf.Name;
+            fileInf.CopyTo(Image_1, true);
+
             DataWorker.CreateListExercisesDB(name_1, Dis_1, Image_1);
         }
         #endregion

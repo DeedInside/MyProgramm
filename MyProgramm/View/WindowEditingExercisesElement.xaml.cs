@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MyProgramm.viewModel;
 
 namespace MyProgramm.View
 {
@@ -23,6 +24,7 @@ namespace MyProgramm.View
         public WindowEditingExercisesElement()
         {
             InitializeComponent();
+            //DataContext = DataExercisesStandart;
             ImageWinEdition = ImageWinXamlEdition;
         }
     }

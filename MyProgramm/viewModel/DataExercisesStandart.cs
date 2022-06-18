@@ -8,6 +8,7 @@ using System.ComponentModel;
 using MyProgramm.View;
 using System.Windows;
 using System.Runtime.CompilerServices;
+using System.IO;
 
 namespace MyProgramm.viewModel
 {
@@ -15,7 +16,7 @@ namespace MyProgramm.viewModel
     {
         private List<exercises> ListExercises = new List<exercises>(DataWorker.AllListExercisesDB());
 
-       // обновление Grid items (элементов)
+        //обновление Grid items(элементов)
         public List<exercises> listExercises
         {
             get
@@ -57,6 +58,7 @@ namespace MyProgramm.viewModel
             {
                 return openWinExercises ?? new RelayCommand(obj =>
                 {
+                    InterfaseReload();
                     OpenWindowEditingExercisesElement();
                 }
                     );
@@ -88,6 +90,7 @@ namespace MyProgramm.viewModel
             set
             {
                 selectedItemOfList = value;
+                InterfaseReload();
                 OnPropertyChanged("SelectedItemOfList");
             }
         }
@@ -103,13 +106,81 @@ namespace MyProgramm.viewModel
                     {
                         exercises exer = obj as exercises;
                         if (exer != null)
+                        { 
                             DataWorker.DeliteListExercisesDB(exer);
+                        }    
                         UppDateWindowsElement.UpdateListData();
                     },
                     (obj) => DataWorker.AllListExercisesDB().Count > 0));
             }
         }
+        private string selectedName;
+        public string SelectedName
+        {
+            get 
+            { 
+                return selectedName; 
+            } 
+            set
+            {
+                selectedName = value;
+                OnPropertyChanged("selectedName");
+            }
+        }
+        private string selectedDiscription;
+        public string SelectedDiscription
+        {
+            get
+            {
+                return selectedDiscription;
+            }
+            set
+            {
+                selectedDiscription = value;
+                OnPropertyChanged("selectedDiscription");
+            }
+        }
+        private string selectedImage;
+        public string SelectedImage
+        {
+            get
+            {
+                return selectedImage;
+            }
+            set
+            {
+                selectedImage = value;
+                OnPropertyChanged("selectedImage");
+            }
+        }
 
+        public void  InterfaseReload()
+        {
+            SelectedName = (string)selectedItemOfList.NameExer;
+            SelectedDiscription = (string)selectedItemOfList.Description;
+            SelectedImage = (string)selectedItemOfList.ImageName;
+        }
+        private RelayCommand editioiExer;
+        public RelayCommand EditioiExer
+        {
+            get
+            {
+                return editioiExer ?? new RelayCommand(obj =>
+                    {
+                        Window win = obj as Window;
+                        exercises exer = obj as exercises;
+                        if (selectedItemOfList != null)
+                        {
+                            MessageBox.Show(SelectedName);
+                            //DataWorker.EditingExercisesDB(selectedItemOfList, exer.NameExer, exer.Description, exer.ImageName);
+                        }
+                       // UppDateWindowsElement.UpdateListData();
+                    }
+                    );
+            } 
+        }
+        //интерфейс методы 
+        #region
         public event PropertyChangedEventHandler PropertyChanged;
         //передача в информации об обновлении в интерфейс 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -123,6 +194,6 @@ namespace MyProgramm.viewModel
         {
             PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
         }
-
+        #endregion
     }
 }
